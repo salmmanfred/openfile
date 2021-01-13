@@ -11,6 +11,7 @@ use std::path::Path;
 
 
 pub fn readFile(names: &str) -> String {
+    //reads the file from names
     let s = "".to_string();
     let fnm = s+&names;
     let contents = match std::fs::read_to_string(fnm){
@@ -24,10 +25,10 @@ pub fn readFile(names: &str) -> String {
 
 
 pub fn writeFile(names:&str, cont:&str) -> i8 {
+    // writes to a file
     let s = "".to_string();
     let fnm = s+&names;
-    let p: &str = &fnm;
-    let path = Path::new(p);
+    let path = Path::new(&fnm);
     let display = path.display();
 
     // Open a file in write-only mode, returns `io::Result<File>`
@@ -50,6 +51,7 @@ pub fn writeFile(names:&str, cont:&str) -> i8 {
 
 }
 pub fn readFileLines(fnm:&str) -> Vec<String> {
+    // reads the file line by line
     let x: &str = &fnm;
     let mut errcode = "Error".to_owned();
     errcode.push_str(x);
@@ -58,7 +60,4 @@ pub fn readFileLines(fnm:&str) -> Vec<String> {
     buf.lines()
         .map(|l| l.expect("Could not parse line"))
         .collect()
-}
-fn main(){
-
 }
