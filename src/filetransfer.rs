@@ -1,7 +1,10 @@
 use crate::filehand;
 
 
-
+/*
+* Made by salmmanfred 2021/01/13
+* MIT license
+*/
 pub fn fileTransfer(fnm:&str,fnm2:&str) -> i8{
     // returns the i8 from wrtiefile and also takes the data from fnm2 and writes it to fnm
     // fnm == filename ( since you cant use fn)

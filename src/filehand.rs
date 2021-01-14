@@ -3,12 +3,15 @@
 * MIT license
 */
 
-
 use std::fs::File;
 use std::io::{prelude::*,BufReader};
 use std::path::Path;
+use std::fs;
 
-
+pub fn removeFile(fnm:&str) -> std::io::Result<()> {
+    fs::remove_file(fnm)?;
+    Ok(())
+}
 
 pub fn readFile(names: &str) -> String {
     //reads the file from names

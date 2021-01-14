@@ -1,4 +1,7 @@
-
+/*
+* Made by salmmanfred 2021/01/13
+* MIT license
+*/
 
 pub mod filehand;
 pub mod filetransfer;
@@ -17,4 +20,7 @@ pub fn fileTransfer(filename: &str,content: &str) -> i8{
 }
 pub fn fileSwap(filename: &str,content: &str) -> i8{
     return filetransfer::fileSwap(filename, content)
+}
+pub fn removeFile(filename: &str)-> std::io::Result<()>{
+    return filehand::removeFile(filename);
 }
