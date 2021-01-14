@@ -15,3 +15,6 @@ pub fn writeFile(filename: &str,content: &str) -> i8{
 pub fn fileTransfer(filename: &str,content: &str) -> i8{
     return filetransfer::fileTransfer(filename, content)
 }
+pub fn fileSwap(filename: &str,content: &str) -> i8{
+    return filetransfer::fileSwap(filename, content)
+}
