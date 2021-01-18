@@ -1,4 +1,4 @@
-This is a cargo for easy opening of files.
+# This is a cargo for easy opening of files.
 
 To get the file into a string: readFile(&str)  Returns string    
 
