@@ -17,12 +17,10 @@ pub fn readFile(names: &str) -> String {
     //reads the file from names
     let s = "".to_string();
     let fnm = s+&names;
-    let contents = match std::fs::read_to_string(fnm){
-        Err(why) => panic!("couldn't read file: {}", why),
-        Ok(contents) => contents,
-    };
-    
+    let contents =  std::fs::read_to_string(fnm).unwrap();
     return contents;
+
+    
 }
 
 
