@@ -41,7 +41,7 @@ pub fn writeFile(names:&str, cont:&str) -> i8 {
     // Write the `LOREM_IPSUM` string to `file`, returns `io::Result<()>`
     match file.write_all(cont.as_bytes()) {
         Err(why) => panic!("couldn't write to {}: {}", display, why),
-        Ok(_) => println!("successfully wrote to {}", display),
+        Ok(_) => print!(""),
     }
     return 1;
     
