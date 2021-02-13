@@ -24,3 +24,6 @@ pub fn fileSwap(filename: &str,content: &str) -> i8{
 pub fn removeFile(filename: &str)-> std::io::Result<()>{
     return filehand::removeFile(filename);
 }
+pub fn writeFileBytes(names:&str, cont:Vec<u8>){
+    filehand::writeFileBytes(names, cont);
+}

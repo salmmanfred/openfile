@@ -62,3 +62,30 @@ pub fn readFileLines(fnm:&str) -> Vec<String> {
         .map(|l| l.expect("Could not parse line"))
         .collect()
 }
+
+pub fn writeFileBytes(names:&str, cont:Vec<u8>) -> i8 {
+    // writes to a file
+    let s = "".to_string();
+    let fnm = s+&names;
+    let path = Path::new(&fnm);
+    let display = path.display();
+
+    // Open a file in write-only mode, returns `io::Result<File>`
+    let mut file = match File::create(&path) {
+        Err(why) => panic!("couldn't create {}: {}", display, why),
+        Ok(file) => file,
+    };
+    //use std::io::Cursor;
+
+    // Write the `LOREM_IPSUM` string to `file`, returns `io::Result<()>`
+    for x in cont{
+        match file.write(&[x]) {
+            Err(why) => panic!("couldn't write to {}: {}", display, why),
+            Ok(_) => print!(""),
+        }
+    }
+    return 1;
+
+    
+
+}

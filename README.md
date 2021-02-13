@@ -12,3 +12,5 @@ To Transfer a file (or copy a file from one file to another)  use: fileTransfer(
 To swap files you need to do: fileSwap(&str,&str) the 2 strings are the 2 files that are being changed Returns 2 if success 2 being the combined value from writefile returns i8  
 
 To delete file removeFile(&str) to remove the file using the name of the file
+
+To save byte arrays do: writeFileBytes(&str,Vec u8)
