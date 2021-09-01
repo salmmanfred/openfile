@@ -18,12 +18,10 @@ pub fn remove_file(fnm:&str) -> std::io::Result<()> {
     Ok(())
 }
 
-pub fn read_file(names: &str) -> String {
+pub fn read_file(names: &str) -> std::io::Result<String> {
     //reads the file from names
-    let s = "".to_string();
-    let fnm = s+&names;
-    let contents =  std::fs::read_to_string(fnm).unwrap();
-    return contents;
+    let contents =  std::fs::read_to_string(names)?;
+    Ok(contents)
 
     
 }
@@ -50,16 +48,17 @@ pub fn write_file(names:&str, cont:&str) -> std::io::Result<()> {
     
 
 }
-pub fn read_file_lines(fnm:&str) -> Vec<String> {
+pub fn read_file_lines(fnm:&str) -> std::io::Result<Vec<String>> {
     // reads the file line by line
     let x: &str = &fnm;
     let mut errcode = "Error".to_owned();
     errcode.push_str(x);
-    let file = File::open(x).expect(&errcode);
+    let file = File::open(x)?;
     let buf = BufReader::new(file);
-    buf.lines()
+    let buf: Vec<String> = buf.lines()
         .map(|l| l.expect("Could not parse line"))
-        .collect()
+        .collect();
+    Ok(buf)
 }
 
 pub fn write_file_bytes(names:&str, cont:Vec<u8>) -> std::io::Result<()> {
@@ -82,13 +81,13 @@ pub fn write_file_bytes(names:&str, cont:Vec<u8>) -> std::io::Result<()> {
     
 
 }
-pub fn read_file_bytes(filename: &str) -> Vec<u8> {
-    let mut f = File::open(&filename).expect("no file found");
-    let metadata = fs::metadata(&filename).expect("unable to read metadata");
+pub fn read_file_bytes(filename: &str) -> std::io::Result<Vec<u8>> {
+    let mut f = File::open(&filename)?;
+    let metadata = fs::metadata(&filename)?;
     let mut buffer = vec![0; metadata.len() as usize];
-    f.read(&mut buffer).expect("buffer overflow");
+    f.read(&mut buffer)?;
 
-    buffer
+    Ok(buffer)
 }
 
 
