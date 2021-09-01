@@ -92,3 +92,30 @@ pub fn read_file_bytes(filename: &str) -> Vec<u8> {
 }
 
 
+trait StrSave{
+    fn as_file(&self, filename: &str) -> std::io::Result<()>;
+}
+impl StrSave for &[u8]{
+    fn as_file(&self, filename: &str) -> std::io::Result<()>{
+        write_file_bytes(filename, self.to_vec())?;
+        Ok(())
+    }
+}
+impl StrSave for Vec<u8>{
+    fn as_file(&self, filename: &str) -> std::io::Result<()>{
+        write_file_bytes(filename, self.to_owned())?;
+        Ok(())
+    }
+}
+impl StrSave for String{
+    fn as_file(&self, filename: &str) -> std::io::Result<()>{
+        write_file(filename, self.as_str())?;
+        Ok(())
+    }
+}
+impl StrSave for str{
+    fn as_file(&self, filename: &str) -> std::io::Result<()>{
+        write_file(filename, self)?;
+        Ok(())
+    }
+}
