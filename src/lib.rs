@@ -91,28 +91,28 @@ pub fn read_file_bytes(filename: &str) -> std::io::Result<Vec<u8>> {
 }
 
 
-trait StrSave{
+trait AsFile{
     fn as_file(&self, filename: &str) -> std::io::Result<()>;
 }
-impl StrSave for &[u8]{
+impl AsFile for &[u8]{
     fn as_file(&self, filename: &str) -> std::io::Result<()>{
         write_file_bytes(filename, self.to_vec())?;
         Ok(())
     }
 }
-impl StrSave for Vec<u8>{
+impl AsFile for Vec<u8>{
     fn as_file(&self, filename: &str) -> std::io::Result<()>{
         write_file_bytes(filename, self.to_owned())?;
         Ok(())
     }
 }
-impl StrSave for String{
+impl AsFile for String{
     fn as_file(&self, filename: &str) -> std::io::Result<()>{
         write_file(filename, self.as_str())?;
         Ok(())
     }
 }
-impl StrSave for str{
+impl AsFile for str{
     fn as_file(&self, filename: &str) -> std::io::Result<()>{
         write_file(filename, self)?;
         Ok(())
