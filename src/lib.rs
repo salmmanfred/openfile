@@ -91,7 +91,7 @@ pub fn read_file_bytes(filename: &str) -> std::io::Result<Vec<u8>> {
 }
 
 
-trait AsFile{
+pub trait AsFile{
     fn as_file(&self, filename: &str) -> std::io::Result<()>;
 }
 impl AsFile for &[u8]{
